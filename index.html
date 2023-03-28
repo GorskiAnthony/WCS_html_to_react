@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Début de react</title>
+		<script src="https://www.unpkg.com/react@16.7.0/umd/react.development.js"></script>
+		<script src="https://www.unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
+		<script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+	</head>
+	<body>
+		<div id="root"></div>
+	</body>
+	<script type="text/babel">
+		const users = [
+			{
+				id: 1,
+				name: "Anthony",
+				skill: "JS",
+				woman: false,
+			},
+			{
+				id: 2,
+				name: "Mathieu",
+				skill: "JS/React",
+				woman: false,
+			},
+			{
+				id: 3,
+				name: "Roxanne",
+				skill: "JS/React",
+				woman: true,
+			},
+			{
+				id: 4,
+				name: "Hafsa",
+				skill: "JS",
+				woman: true,
+			},
+		];
+
+		const User = ({ name, skill, woman }) => {
+			return (
+				<div>
+					<h1>
+						Hello {name} 👋
+						{woman ? "🦄" : "🍺"}
+					</h1>
+					<h1>Tu fais du "{skill}"</h1>
+					<img src="https://picsum.photos/200/300" />
+				</div>
+			);
+		};
+
+		const App = () => (
+			<div style={{ display: "flex", flexWrap: "wrap" }}>
+				{users.map((user) => {
+					return <User key={user.id} {...user} />;
+				})}
+				{
+					// users.map((user) => (
+					//      <User {...user} />;
+					// ))
+				}
+			</div>
+		);
+
+		ReactDOM.render(<App />, document.querySelector("#root"));
+	</script>
+</html>
